@@ -19,16 +19,20 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'nome',
+        'name',
         'email',
         'password',
-        ''
+        'phone',
+        'profile'
     ];
+
+    protected $casts = ['profile' => UserProfile::class];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>
+     * 
      */
     protected $hidden = [
         'password',

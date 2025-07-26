@@ -6,6 +6,6 @@ enum UserProfile: string
 {
     case ADMIN = "admin";
     case SUPERVISOR = "supervisor";
-    case PADRAO = "padrao";   
+    case DEFAULT = "default";   
     
 }

@@ -4,9 +4,9 @@ namespace App\Enums;
 
 enum Priority
 {
-    case LOW = "baixa";
+    case LOW = "low";
     case NORMAL = "normal";
-    case HIGH = "alta";
-    case MAX = "maxima";
+    case HIGH = "high";
+    case MAX = "maximum";
 
 }
