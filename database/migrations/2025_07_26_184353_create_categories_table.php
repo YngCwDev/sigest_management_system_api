@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('consumable_id')->references('id')->on('consumables');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

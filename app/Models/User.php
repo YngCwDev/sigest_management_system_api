@@ -21,9 +21,8 @@ class User extends Authenticatable
         'username',
         'name',
         'email',
-        'password',
         'phone',
-        'profile'
+        'password'
     ];
 
     protected $casts = ['profile' => UserProfile::class];

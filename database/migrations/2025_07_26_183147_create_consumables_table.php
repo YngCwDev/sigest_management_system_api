@@ -17,11 +17,12 @@ return new class extends Migration {
             $table->string('name')->unique();
             $table->json('description');
             $table->integer('stock');
-            $table->string('unidade');
-            $table->string('validade');
+            $table->string('unidade')->nullable();
+            $table->dateTime('validade')->nullable();
             $table->dateTime('entry_date');
             $table->dateTime('last_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

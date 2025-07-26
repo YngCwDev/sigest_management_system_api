@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('address');
-            $table->string('city');
+            $table->string('city')->nullable();
             $table->string('country');
-            $table->string('agent');
-            $table->string('agent_phone');
+            $table->string('agent')->nullable();
+            $table->string('agent_phone')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
