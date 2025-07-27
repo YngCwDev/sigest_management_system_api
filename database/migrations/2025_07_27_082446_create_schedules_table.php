@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name');
-            $table->enum('priority', ['low','normal','high','maximum'])->default('low')->index();
-            $table->mediumText('description');
+            $table->string('title');
+            $table->string('description');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('schedules');
     }
 };
