@@ -12,8 +12,6 @@ return new class extends Migration {
     {
         Schema::create('consumables', function (Blueprint $table) {
             $table->id()->primary();
-            $table->foreignId('category_id')->references('id')->on('categories');
-            $table->foreignId('supplier_id')->references('id')->on('suppliers')->nullOnDelete();
             $table->string('name')->unique();
             $table->json('description');
             $table->integer('stock');

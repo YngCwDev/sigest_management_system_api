@@ -12,9 +12,6 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id()->primary();
-            $table->foreignId('consumable_id')->references('id')->on('consumables');
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('department_id')->references('id')->on('departments');
             $table->json('description');
             $table->enum('priority', ['low', 'normal', 'high', 'maximum'])->default('low');
             $table->enum('status', ['pending', 'processing', 'cancelled', 'completed'])->default('pending');

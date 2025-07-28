@@ -4,19 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('name');
-     
+        Schema::create('category_consumable', function (Blueprint $table) {
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('consumable_id')->constrained('consumables')->cascadeOnDelete();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category_consumable');
     }
 };
