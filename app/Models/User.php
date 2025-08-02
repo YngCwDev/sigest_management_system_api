@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\Priority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -21,14 +22,18 @@ class User extends Authenticatable implements JWTSubject
      * @var list<string>
      */
     protected $fillable = [
+        'department_id',
+        'role_id',
+        'priority',
         'username',
-        'name',
         'email',
+        'name',
         'phone',
         'password'
     ];
 
-    protected $casts = ['profile' => UserProfile::class];
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -50,15 +55,23 @@ class User extends Authenticatable implements JWTSubject
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'priority' => Priority::class   
         ];
     }
 
-    public function orders(): HasMany{
+    public function orders(): HasMany
+    {
         return $this->hasMany(Order::class);
     }
 
-    public function department(): BelongsTo{
+    public function department(): BelongsTo
+    {
         return $this->belongsTo(Department::class);
+    }
+
+    public function role():BelongsTo{
+
+        return $this->belongsTo(roles::class);
     }
 
 }

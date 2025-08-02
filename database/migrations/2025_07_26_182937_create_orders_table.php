@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->json('description');
             $table->enum('priority', ['low', 'normal', 'high', 'maximum'])->default('low');
             $table->enum('status', ['pending', 'processing', 'cancelled', 'completed'])->default('pending');
-            $table->string('quantity');
             $table->timestamps();
         });
     }

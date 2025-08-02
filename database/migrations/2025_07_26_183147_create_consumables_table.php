@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     /**
      * Run the migrations.
-     */
+     */ 
     public function up(): void
     {
         Schema::create('consumables', function (Blueprint $table) {
@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->string('name')->unique();
             $table->json('description');
             $table->integer('stock');
-            $table->string('unidade')->nullable();
-            $table->dateTime('validade')->nullable();
+            $table->string('unit')->nullable();
+            $table->dateTime('expires_at')->nullable();
             $table->dateTime('entry_date');
             $table->dateTime('last_date');
             $table->timestamps();

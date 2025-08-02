@@ -11,6 +11,24 @@ class consumable extends Model
     /** @use HasFactory<\Database\Factories\ConsumableFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'supplier_id',
+        'name',
+        'description',
+        'stock',
+        'unit',
+        'expires_at',
+        'entry_date',
+        'last_date'
+    ];
+
+    protected $casts = [
+        'supplier_id' => 'integer',
+        'description' => 'array',
+        'expires_at' => 'datetime',
+        'entry_date' => 'datetime',
+        'last_date' => 'datetime'
+    ];
 
     public function orders(): BelongsTo
     {
@@ -22,6 +40,6 @@ class consumable extends Model
         return $this->belongsTo(supplier::class);
     }
 
-    
+
 
 }

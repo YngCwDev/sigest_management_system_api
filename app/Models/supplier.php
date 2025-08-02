@@ -8,11 +8,30 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class supplier extends Model
 {
+
     /** @use HasFactory<\Database\Factories\SupplierFactory> */
     use HasFactory;
 
 
-    public function consumables():HasMany{
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'country',
+        'agent',
+        'agent_phone',
+        'is_active',
+        'contract_expires'
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'contract_expires' => 'datetime'
+    ];
+
+    public function consumables(): HasMany
+    {
         return $this->hasMany(consumable::class);
     }
 }
