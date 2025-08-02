@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('name');
-            $table->string('phone')->nullable(true);
-            $table->enum('profile', ['admin','supervisor','default'])->default('default');
+            $table->enum('priority', ['low','normal','high','maximum'])->default('low')->index();
+            $table->string('phone');
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();

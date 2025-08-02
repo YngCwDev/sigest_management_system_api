@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('name');
             $table->enum('priority', ['low','normal','high','maximum'])->default('low')->index();
-            $table->mediumText('description');
+            $table->json('description');
             $table->timestamps();
             $table->softDeletes();
         });

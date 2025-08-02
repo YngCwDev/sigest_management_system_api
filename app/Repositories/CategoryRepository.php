@@ -15,6 +15,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function getById($id)
     {
         return Category::findOrFail($id);
+        
     }
     public function store(array $data)
     {

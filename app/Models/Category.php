@@ -10,7 +10,7 @@ class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
-
+    protected $perPage= 5;
     public function consumables(): HasMany{
         return $this->hasMany(consumable::class);
     }
