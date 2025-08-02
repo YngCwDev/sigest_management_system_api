@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoresupplierRequest;
-use App\Http\Requests\UpdatesupplierRequest;
-use App\Models\supplier;
+use App\Http\Requests\StoreSupplierRequest;
+use App\Http\Requests\UpdateSupplierRequest;
+use App\Models\Supplier;
 
 class SupplierController extends Controller
 {
@@ -27,7 +27,7 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoresupplierRequest $request)
+    public function store(StoreSupplierRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class SupplierController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(supplier $supplier)
+    public function show(Supplier $Supplier)
     {
         //
     }
@@ -43,7 +43,7 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(supplier $supplier)
+    public function edit(Supplier $Supplier)
     {
         //
     }
@@ -51,7 +51,7 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatesupplierRequest $request, supplier $supplier)
+    public function update(UpdateSupplierRequest $request, Supplier $Supplier)
     {
         //
     }
@@ -59,7 +59,7 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(supplier $supplier)
+    public function destroy(Supplier $Supplier)
     {
         //
     }

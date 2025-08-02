@@ -32,7 +32,7 @@ class Order extends Model
     }
     public function consumables(): HasMany
     {
-        return $this->hasMany(consumable::class);
+        return $this->hasMany(Consumable::class);
     }
     public function department(): BelongsTo
     {

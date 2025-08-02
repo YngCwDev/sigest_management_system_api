@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\consumable;
+use App\Models\Consumable;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

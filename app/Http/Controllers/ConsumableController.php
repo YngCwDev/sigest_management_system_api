@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreconsumableRequest;
-use App\Http\Requests\UpdateconsumableRequest;
-use App\Models\consumable;
+use App\Http\Requests\StoreConsumableRequest;
+use App\Http\Requests\UpdateConsumableRequest;
+use App\Models\Consumable;
 
 class ConsumableController extends Controller
 {
@@ -27,7 +27,7 @@ class ConsumableController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreconsumableRequest $request)
+    public function store(StoreConsumableRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ConsumableController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(consumable $consumable)
+    public function show(Consumable $Consumable)
     {
         //
     }
@@ -43,7 +43,7 @@ class ConsumableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(consumable $consumable)
+    public function edit(Consumable $Consumable)
     {
         //
     }
@@ -51,7 +51,7 @@ class ConsumableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateconsumableRequest $request, consumable $consumable)
+    public function update(UpdateConsumableRequest $request, Consumable $Consumable)
     {
         //
     }
@@ -59,7 +59,7 @@ class ConsumableController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(consumable $consumable)
+    public function destroy(Consumable $Consumable)
     {
         //
     }

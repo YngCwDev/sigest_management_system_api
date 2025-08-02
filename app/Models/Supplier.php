@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class supplier extends Model
+class Supplier extends Model
 {
 
     /** @use HasFactory<\Database\Factories\SupplierFactory> */
@@ -32,6 +32,6 @@ class supplier extends Model
 
     public function consumables(): HasMany
     {
-        return $this->hasMany(consumable::class);
+        return $this->hasMany(Consumable::class);
     }
 }

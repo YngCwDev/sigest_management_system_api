@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\consumable;
+use App\Models\Consumable;
 use App\Repositories\Interfaces\ConsumableRepositoryInterface;
 
 class ConsumableRepository implements ConsumableRepositoryInterface
@@ -10,23 +10,23 @@ class ConsumableRepository implements ConsumableRepositoryInterface
 
     public function list()
     {
-        return consumable::all();
+        return Consumable::all();
     }
     public function getById($id)
     {
-        return consumable::findOrFail($id);
+        return Consumable::findOrFail($id);
     }
     public function store(array $data)
     {
-        return consumable::create($data);
+        return Consumable::create($data);
     }
     public function update(array $data, $id)
     {
-        return consumable::where('id','=',$id)->update($data);
+        return Consumable::where('id','=',$id)->update($data);
     }
     public function delete($id)
     {
-        return consumable::destroy($id);
+        return Consumable::destroy($id);
     }
 
 }

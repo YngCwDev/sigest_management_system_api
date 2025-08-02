@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\supplier;
+use App\Models\Supplier;
 use App\Repositories\Interfaces\SupplierRepositoryInterface;
 
 class SupplierRepository implements SupplierRepositoryInterface
@@ -11,23 +11,23 @@ class SupplierRepository implements SupplierRepositoryInterface
 
     public function list()
     {
-        return supplier::all();
+        return Supplier::all();
     }
     public function getById($id)
     {
-        return supplier::findOrFail($id);
+        return Supplier::findOrFail($id);
     }
     public function store(array $data)
     {
-        return supplier::create($data);
+        return Supplier::create($data);
     }
     public function update(array $data, $id)
     {
-        return supplier::where('id','=',$id)->update($data);
+        return Supplier::where('id','=',$id)->update($data);
     }
     public function delete($id)
     {
-        return supplier::destroy($id);
+        return Supplier::destroy($id);
     }
 
 }

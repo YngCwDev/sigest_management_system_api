@@ -17,7 +17,7 @@ class Category extends Model
     
     public function consumables(): HasMany
     {
-        return $this->hasMany(consumable::class);
+        return $this->hasMany(Consumable::class);
     }
 
 }

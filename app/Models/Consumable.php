@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class consumable extends Model
+class Consumable extends Model
 {
     /** @use HasFactory<\Database\Factories\ConsumableFactory> */
     use HasFactory;
@@ -35,9 +35,9 @@ class consumable extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function supplier(): BelongsTo
+    public function Supplier(): BelongsTo
     {
-        return $this->belongsTo(supplier::class);
+        return $this->belongsTo(Supplier::class);
     }
 
 
