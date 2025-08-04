@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Roles;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +12,8 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Roles::create(['profile' => 'admin']);
+        Roles::create(['profile' => 'supervisor']);
+        Roles::create(['profile' => 'default']);
     }
 }
