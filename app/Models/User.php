@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-     /**
+    /**
      * Get the identifier that will be stored in the JWT token.
      */
     public function getJWTIdentifier()
@@ -28,7 +29,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -37,15 +38,19 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var list<string>
      */
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
-        'department_id',
-        'role_id',
-        'priority',
         'username',
         'email',
         'name',
         'phone',
-        'password'
+        'password',
+        'department_id',
+        'role_id',
+        'priority'
     ];
 
 
@@ -66,15 +71,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'priority' => Priority::class   
-        ];
-    }
-
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'priority' => Priority::class
+    ];
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
@@ -85,9 +86,21 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Department::class);
     }
 
-    public function role():BelongsTo{
+    public function role(): BelongsTo
+    {
 
         return $this->belongsTo(Roles::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = (string) Str::uuid();
+            }
+        });
     }
 
 }

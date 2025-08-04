@@ -2,11 +2,10 @@
 
 namespace App\Enums;
 
-enum OrderStatus
+enum OrderStatus:string
 {
     case PENDING = "pending";
-    case PROCESSING = "processing
-";
+    case PROCESSING = "processing";
     case CANCELLED = "cancelled";
     case COMPLETED = "completed";
     

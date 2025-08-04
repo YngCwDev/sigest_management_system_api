@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('Roles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->enum('profile', ['admin', 'supervisor', 'default'])->default('default')->unique();
             $table->timestamps();

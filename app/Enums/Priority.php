@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum Priority
+enum Priority:string
 {
-    case LOW = "low";
-    case NORMAL = "normal";
-    case HIGH = "high";
-    case MAX = "maximum";
+    case LOW = 'low';
+    case NORMAL = 'normal';
+    case HIGH = 'high';
+    case MAX = 'maximum';
 
 }
