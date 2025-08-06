@@ -25,7 +25,7 @@ class Consumable extends Model
     protected $casts = [
         'supplier_id' => 'integer',
         'description' => 'array',
-        'expires_at' => 'datetime',
+        'expires_at' => 'date',
         'entry_date' => 'datetime',
         'last_date' => 'datetime'
     ];

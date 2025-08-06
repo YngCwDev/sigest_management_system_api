@@ -27,7 +27,7 @@ class Supplier extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'contract_expires' => 'datetime'
+        'contract_expires' => 'date'
     ];
 
     public function consumables(): HasMany
