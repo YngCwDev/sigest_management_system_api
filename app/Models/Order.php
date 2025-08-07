@@ -30,9 +30,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function consumables(): HasMany
+    public function supplies(): HasMany
     {
-        return $this->hasMany(Consumable::class);
+        return $this->hasMany(Supply::class);
     }
     public function department(): BelongsTo
     {

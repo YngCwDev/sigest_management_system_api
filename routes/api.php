@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ConsumableController;
+use App\Http\Controllers\SupplyController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,8 @@ Route::middleware('jwt')->group(function () {
 
 //Supplies Routes
 
-Route::get("/supplies", [ConsumableController::class, "getAllSupplies"]);
-Route::get('/supplies/{id}', [ConsumableController::class, "getSupply"]);
-Route::post("/supplies", [ConsumableController::class, "create"]);
-Route::post("/supplies", [ConsumableController::class, "create"]);
+Route::get("/supplies", [SupplyController::class, "getAllSupplies"]);
+Route::get('/supplies/{id}', [SupplyController::class, "getSupply"]);
+Route::post("/supplies", [SupplyController::class, "create"]);
+Route::put("/supplies/{id}", [SupplyController::class, "update"]);  
+Route::delete("/supplies/{id}", [SupplyController::class, "destroy"]);

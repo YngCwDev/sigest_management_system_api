@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreConsumableRequest;
-use App\Http\Requests\UpdateConsumableRequest;
-use App\Models\Consumable;
-use App\Repositories\Interfaces\ConsumableRepositoryInterface;
+use App\Http\Requests\StoreSupplyRequest;
+use App\Http\Requests\UpdateSupplyRequest;
+use App\Models\Supply;
+use App\Repositories\Interfaces\SupplyRepositoryInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,24 +13,16 @@ use JsonException;
 use Mockery\Expectation;
 use Throwable;
 
-class ConsumableController extends Controller
+class SupplyController extends Controller
 {
 
-    protected $consumableRepo;
+    protected $supplyRepo;
 
-    public function __construct(ConsumableRepositoryInterface $consumableRepo)
+    public function __construct(SupplyRepositoryInterface $supplyRepo)
     {
-        $this->consumableRepo = $consumableRepo;
+        $this->supplyRepo = $supplyRepo;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $consumables = $this->consumableRepo->list();
-        return response()->json($consumables);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +30,7 @@ class ConsumableController extends Controller
     public function create(Request $request)
     {
         try {
-            $consumables = $this->consumableRepo->store(
+            $supplies = $this->supplyRepo->store(
                 [
                     "name" => $request->name,
                     "description" => $request->description,
@@ -66,7 +58,7 @@ class ConsumableController extends Controller
     {
 
         try {
-            return response()->json($this->consumableRepo->list(), 200);
+            return response()->json($this->supplyRepo->list(), 200);
         } catch (JsonException $e) {
             return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
         }
@@ -77,7 +69,7 @@ class ConsumableController extends Controller
     {
 
         try {
-            return response()->json($this->consumableRepo->getById($id), 200);
+            return response()->json($this->supplyRepo->getById($id), 200);
         } catch (JsonException $e) {
             return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
         }
@@ -86,16 +78,33 @@ class ConsumableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateConsumableRequest $request, Consumable $consumable)
+    public function update(Request $request, $id)
     {
-        //
+
+        try {
+
+            $supply = $this->supplyRepo->getById($id);
+            $supply->update($request->only($supply->getFillable()));
+            return response()->json($supply, 200);
+
+        } catch (JsonException $e) {
+
+            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Consumable $consumable)
+    public function destroy($id)
     {
-        //
+        try {
+            $this->supplyRepo->delete($id);
+            return response()->json(["massage" => "Supply deleted Succefully!"], 200);
+        } catch (JsonException $e) {
+            return response()->json(["massage" => 'Something Went Wrong: $e']);
+
+        }
     }
 }

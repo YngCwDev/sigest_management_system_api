@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\CategoryRepository;
-use App\Repositories\ConsumableRepository;
+use App\Repositories\SupplyRepository;
 use App\Repositories\DepartmentRepository;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
-use App\Repositories\Interfaces\ConsumableRepositoryInterface;
+use App\Repositories\Interfaces\SupplyRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\SupplierRepositoryInterface;
@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(SupplierRepositoryInterface::class, SupplierRepository::class);
-        $this->app->bind(ConsumableRepositoryInterface::class, ConsumableRepository::class);
+        $this->app->bind(SupplyRepositoryInterface::class, SupplyRepository::class);
         $this->app->bind(DepartmentRepositoryInterface::class, DepartmentRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
 

@@ -30,8 +30,8 @@ class Supplier extends Model
         'contract_expires' => 'date'
     ];
 
-    public function consumables(): HasMany
+    public function supplies(): HasMany
     {
-        return $this->hasMany(Consumable::class);
+        return $this->hasMany(Supply::class);
     }
 }
