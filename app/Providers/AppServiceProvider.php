@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enums\UserProfile;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ConsumableRepository;
 use App\Repositories\DepartmentRepository;
