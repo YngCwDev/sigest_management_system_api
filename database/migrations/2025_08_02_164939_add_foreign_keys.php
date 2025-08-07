@@ -12,9 +12,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->nullable()->constrained("roles");
             $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
-            $table->foreignId('role_id')->constrained();
-        });
+        });        
 
         Schema::table('schedules', function (Blueprint $table) {
             $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete();
