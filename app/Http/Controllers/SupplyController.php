@@ -24,6 +24,33 @@ class SupplyController extends Controller
     }
 
 
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function getAllSupplies()
+    {
+
+        try {
+            return response()->json($this->supplyRepo->list(), 200);
+        } catch (JsonException $e) {
+            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+        }
+
+    }
+
+    public function getSupply($id)
+    {
+
+        try {
+            return response()->json($this->supplyRepo->getById($id), 200);
+        } catch (JsonException $e) {
+            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+        }
+
+    }
+   
+
     public function createSupply(StoreSupplyRequest $request)
     {
         try {
@@ -48,29 +75,6 @@ class SupplyController extends Controller
     }
 
 
-
-    public function getAllSupplies()
-    {
-
-        try {
-            return response()->json($this->supplyRepo->list(), 200);
-        } catch (JsonException $e) {
-            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
-        }
-
-    }
-
-    public function getSupply($id)
-    {
-
-        try {
-            return response()->json($this->supplyRepo->getById($id), 200);
-        } catch (JsonException $e) {
-            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
-        }
-
-    }
-   
 
     public function updateSupply(UpdateSupplyRequest $request, $id)
     {

@@ -9,13 +9,16 @@ use Exception;
 
 class DepartmentController extends Controller
 {
-
     protected $departmentRepo;
 
     public function __construct(DepartmentRepositoryInterface $departmentRepo)
     {
         $this->departmentRepo = $departmentRepo;
     }
+
+    /**
+     * Display a listing of the resource.
+     */
 
     public function getAllDepartments()
     {
@@ -30,6 +33,11 @@ class DepartmentController extends Controller
         }
     }
 
+    /**
+     * Display a single resource.
+     */
+
+
     public function getDepartment($id)
     {
         try {
@@ -42,6 +50,11 @@ class DepartmentController extends Controller
             return response()->json(["message" => "Error Processing Request!"], 500);
         }
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+
 
     public function createDepartment(StoreDepartmentRequest $request)
     {
@@ -62,6 +75,13 @@ class DepartmentController extends Controller
         }
     }
 
+
+
+    /** 
+     * Update the specified resource in storage.
+     */
+
+
     public function updateDepartment(UpdateDepartmentRequest $request, $id)
     {
         try {
@@ -75,6 +95,12 @@ class DepartmentController extends Controller
             return response()->json(["message" => "Error Processing Request!"], 500);
         }
     }
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
 
     public function destroyDepartment($id)
     {

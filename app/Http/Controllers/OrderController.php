@@ -37,10 +37,10 @@ class OrderController extends Controller
     /**
      * Display a single resource.
      */
-    public function getOrder()
+    public function getOrder($id)
     {
         return Response()->json(
-            $this->orderRepo->list()
+            $this->orderRepo->getById($id),
         );
     }
 
@@ -90,8 +90,17 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+
+        try {
+            $this->orderRepo->delete($id);
+            return response()->json(["message" => "Deleted Successfuly"], 200);
+        } catch (Exception $e) {
+            return response()->json(
+                ["message" => "Error Processing Request!"],
+                500
+            );
+        }
     }
 }

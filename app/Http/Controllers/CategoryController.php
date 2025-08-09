@@ -19,7 +19,37 @@ class CategoryController extends Controller
         $this->categoryRepo = $categoryRepo;
     }
 
-    public function addCategory(StoreCategoryRequest $request)
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function getCategories()
+    {
+        try {
+            $categories = $this->categoryRepo->list();
+            return response()->json($categories);
+        } catch (Exception $e) {
+            return response()->json(["message" => "Error Processing Request!"], 500);
+        }
+    }
+
+
+    /**
+     * Display a single resource.
+     */
+    public function getCategory($id)
+    {
+        try {
+            $category = $this->categoryRepo->getById($id);
+            return response()->json($category);
+        } catch (Exception $e) {
+            return response()->json(["message" => "Error Processing Request!"], 500);
+        }
+    }
+
+
+    public function createCategory(StoreCategoryRequest $request)
     {
         try {
             $category = $this->categoryRepo->store(
@@ -33,27 +63,7 @@ class CategoryController extends Controller
 
         }
     }
-
-    public function getCategories()
-    {
-        try {
-            $categories = $this->categoryRepo->list();
-            return response()->json($categories);
-        } catch (Exception $e) {
-            return response()->json(["message" => "Error Processing Request!"], 500);
-        }
-    }
-
-    public function getCategory($id)
-    {
-        try {
-            $category = $this->categoryRepo->getById($id);
-            return response()->json($category);
-        } catch (Exception $e) {
-            return response()->json(["message" => "Error Processing Request!"], 500);
-        }
-    }
-
+    
     public function updateCategory(UpdateCategoryRequest $request, $id)
     {
         try {
