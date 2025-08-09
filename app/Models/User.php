@@ -89,14 +89,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Roles::class);
+
+        return $this->belongsTo(Roles::class, 'role_id');
         
     }
 
-    public function hasRole($profile){
-        return $this->role->profile ==$profile;
-    }
-
+    
     protected static function boot()
     {
         parent::boot();

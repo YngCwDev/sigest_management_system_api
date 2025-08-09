@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Consumable extends Model
+class Supply extends Model
 {
-    /** @use HasFactory<\Database\Factories\ConsumableFactory> */
+    /** @use HasFactory<\Database\Factories\SupplyFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -25,7 +25,7 @@ class Consumable extends Model
     protected $casts = [
         'supplier_id' => 'integer',
         'description' => 'array',
-        'expires_at' => 'datetime',
+        'expires_at' => 'date',
         'entry_date' => 'datetime',
         'last_date' => 'datetime'
     ];

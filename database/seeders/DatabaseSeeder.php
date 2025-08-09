@@ -4,6 +4,7 @@ use Illuminate\Support\Str;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Enums\UserProfile; 
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,17 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
     // User::factory(10)->create();
-    DB::table('roles')->insert([
-        ['profile' => 'admin',
-        'created_at' => now()
-        ],
-        ['profile' => 'supervisor',
-        'created_at' => now()   
-         ],
-        ['profile' => 'default',
-        'created_at' => now()
-        ]
-    ]);
-
+    
+         DB::table('roles')->insert([
+            ['profile' => UserProfile::ADMIN->value, 'created_at' => now(), 'updated_at' => now()],
+            ['profile' => UserProfile::SUPERVISOR->value, 'created_at' => now(), 'updated_at' => now()],
+            ['profile' => UserProfile::DEFAULT->value, 'created_at' => now(), 'updated_at' => now()],
+        ]);
     }
 }

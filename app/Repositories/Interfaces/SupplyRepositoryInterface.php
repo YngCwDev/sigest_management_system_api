@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface ConsumableRepositoryInterface
+interface SupplyRepositoryInterface
 {
     public function list();
     public function getById($id);

@@ -10,7 +10,7 @@ return new class extends Migration {
      */ 
     public function up(): void
     {
-        Schema::create('consumables', function (Blueprint $table) {
+        Schema::create('supplies', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name')->unique();
             $table->json('description');
@@ -29,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('consumables');
+        Schema::dropIfExists('supplies');
     }
 };

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('consumable_id')->constrained('consumables')->cascadeOnDelete();
+            $table->foreignId('supply_id')->constrained('supplies')->cascadeOnDelete();
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->integer('quantity')->default(1);
             $table->timestamps();
