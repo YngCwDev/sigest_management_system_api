@@ -24,7 +24,7 @@ class SupplyController extends Controller
     }
 
 
-    public function addSupply(StoreSupplyRequest $request)
+    public function createSupply(StoreSupplyRequest $request)
     {
         try {
             $supplies = $this->supplyRepo->store(
@@ -72,7 +72,7 @@ class SupplyController extends Controller
     }
    
 
-    public function update(UpdateSupplyRequest $request, $id)
+    public function updateSupply(UpdateSupplyRequest $request, $id)
     {
 
         try {
@@ -88,7 +88,7 @@ class SupplyController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroySupply($id)
     {
         try {
             $this->supplyRepo->delete($id);

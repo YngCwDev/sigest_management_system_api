@@ -14,7 +14,7 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')->nullable()->constrained("roles");
             $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
-        });        
+        });
 
         Schema::table('schedules', function (Blueprint $table) {
             $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete();
@@ -22,9 +22,8 @@ return new class extends Migration {
         });
 
         Schema::table('orders', function (Blueprint $table) {
-            $table->foreignId('supply_id')->nullable()->constrained('supplies')->nullOnDelete();
-            $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
+            $table->foreignUuid('user_id')->constrained('users');
+            $table->foreignId('department_id')->constrained('departments');
         });
 
         Schema::table('supplies', function (Blueprint $table) {

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class Supply extends Model
 {
     /** @use HasFactory<\Database\Factories\SupplyFactory> */
@@ -30,9 +30,9 @@ class Supply extends Model
         'last_date' => 'datetime'
     ];
 
-    public function orders(): BelongsTo
+    public function orderItems(): HasMany
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasMany(OrderItems::class);
     }
 
     public function Supplier(): BelongsTo

@@ -15,9 +15,11 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'department_id',
         'description',
         'priority',
-        'status',
+        'status', 
     ];
 
     protected $casts = [
@@ -30,9 +32,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function supplies(): HasMany
+    public function orderItems(): HasMany
     {
-        return $this->hasMany(Supply::class);
+        return $this->hasMany(OrderItems::class);
     }
     public function department(): BelongsTo
     {

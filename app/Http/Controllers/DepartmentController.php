@@ -30,8 +30,6 @@ class DepartmentController extends Controller
         }
     }
 
-
-
     public function getDepartment($id)
     {
         try {
@@ -64,17 +62,13 @@ class DepartmentController extends Controller
         }
     }
 
-
     public function updateDepartment(UpdateDepartmentRequest $request, $id)
     {
         try {
-            $category = $this->departmentRepo->getById($id);
-            $category->update(
-                $request->only($category->getFillable()),
-                $id
-            );
+            $department = $this->departmentRepo->getById($id);
+            $department->update($request->only($department->getFillable()));
             return response()->json(
-                $category,
+                $department,
                 200
             );
         } catch (Exception $th) {
