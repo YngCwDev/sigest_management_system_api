@@ -6,17 +6,30 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SupplyController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-//User Routes
 
-Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('jwt')->group(function () {
+
     Route::get('/user', [AuthController::class, 'getUser']);
     Route::put('/user', [AuthController::class, 'updateUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get("/users", [UserController::class, "getAllUsers"]);
+    Route::get('/users/{id}', [UserController::class, "getUser"]);
+    Route::post('/register', [UserController::class, 'registeUser']);
+    Route::delete('/users/{id}', [UserController::class, "destroyUser"]);
+
+    //Roles Routes
+
+    Route::get("/roles", [SupplyController::class, "getAllSupplies"]);
+    Route::get('/roles/{id}', [SupplyController::class, "getSupply"]);
+    Route::post("/roles", [SupplyController::class, "createSupply"]);
+    Route::put("/roes/{id}", [SupplyController::class, "updateSupply"]);
+    Route::delete("/roles/{id}", [SupplyController::class, "destroySupply"]);
 
     //Supplies Routes
 
@@ -58,7 +71,7 @@ Route::middleware('jwt')->group(function () {
     Route::put("/orders/{id}", [OrderController::class, "updateOrder"]);
     Route::delete("/orders/{id}", [OrderController::class, "destroyOrder"]);
 
-    // 
+
 
 });
 

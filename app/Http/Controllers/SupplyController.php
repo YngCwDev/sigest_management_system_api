@@ -34,7 +34,7 @@ class SupplyController extends Controller
         try {
             return response()->json($this->supplyRepo->list(), 200);
         } catch (JsonException $e) {
-            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+            return new JsonResponse(data: ["massage" => "Error Processing Request!"]);
         }
 
     }
@@ -45,7 +45,7 @@ class SupplyController extends Controller
         try {
             return response()->json($this->supplyRepo->getById($id), 200);
         } catch (JsonException $e) {
-            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+            return new JsonResponse(data: ["massage" => "Error Processing Request!"]);
         }
 
     }
@@ -87,7 +87,7 @@ class SupplyController extends Controller
 
         } catch (JsonException $e) {
 
-            return response()->json(data: ["massage" => 'Something Went Wrong: $e']);
+            return new JsonResponse(data: ["massage" => "Error Processing Request!"]);
 
         }
     }
